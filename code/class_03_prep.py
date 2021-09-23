@@ -55,6 +55,15 @@ res
 
 
 
+# from doc
+
+bs = IIDBootstrap(y, x)
+ci = bs.conf_int(ols, 1000, method='percentile',
+                 sampling='semi', extra_kwargs={'x_orig': x})
+
+
+
+
 from arch.bootstrap import IIDBootstrap
 bs = IIDBootstrap(returns)
 ci = bs.conf_int(sharpe_ratio, 1000, method='studentized',
@@ -80,6 +89,8 @@ def sharpe_ratio_se(params, x):
                   ])
     avar = D.dot(vcv /t).dot(D.T)
     return np.sqrt(np.diag(avar))
+
+
 
 
 
